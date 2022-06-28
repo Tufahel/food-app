@@ -1,0 +1,22 @@
+<section>
+  <div>
+   <%= button_to "Add Food", new_food_path %>
+  </div>
+  <table>
+    <th>
+     <td>Food</td>
+     <td>Measurement unit</td>
+     <td>Unit price</td>
+     <td>Action</td>
+    </td>
+    <tr>
+      <% @foods.each do |food| %>
+        <td><%= food.name %></td>
+        <td><%= food.measurement_unit %></td>
+        <td><%= '$' food.price %></td>
+        <td><%= button_to "Delete", food method: delete %></td>
+      <% end %>
+    </tr>
+  </table>
+</section>
+<%= link_to "New blog", new_blog_path %>
