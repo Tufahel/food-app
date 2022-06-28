@@ -2,10 +2,8 @@
 
 <section>
   <%= render "food", food: @food %>
+  <%= button_to "Delete this food", food_path, method: :delete %>
+    <%= link_to "Back to food", foods_path %>
 </section>
 
-<div>
-  <%= link_to "Back to food", foods_path %>
 
-  <%= button_to "Delete this food",food_path, method: :delete %>
-</div>

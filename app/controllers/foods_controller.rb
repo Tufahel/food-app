@@ -8,7 +8,7 @@ class FoodsController < ApplicationController
   end
 
   def create;
-    @food = food.new(food_params)
+    @food = Food.new(food_params)
     
     if @food.save
       flash[:success] = 'Food added successfully'
@@ -34,7 +34,7 @@ class FoodsController < ApplicationController
     end
   end
 
-  private
+
 
   def food_params
     my_food = params.require(:food).permit(:name, :measurement_unit, :price)
