@@ -24,7 +24,7 @@ class FoodsController < ApplicationController
   def destroy; end
 
   def food_params
-    my_food = params.require(:food).permit(:name, :measurement_id, :price)
+    my_food = params.require(:food).permit(:name, :measurement_unit, :price)
     my_food[:user] = current_user
     my_food
   end
