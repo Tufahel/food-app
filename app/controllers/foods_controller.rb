@@ -3,13 +3,13 @@ class FoodsController < ApplicationController
     @foods = Food.all
   end
 
-  def new; 
+  def new
     @food = Food.new
   end
 
-  def create;
+  def create
     @food = Food.new(food_params)
-    
+
     if @food.save
       flash[:success] = 'Food added successfully'
       redirect_to foods_path
@@ -24,7 +24,7 @@ class FoodsController < ApplicationController
   end
 
   def destroy
-   @food = Food.find(params[:id])
+    @food = Food.find(params[:id])
     if @food.destroy
       flash[:success] = 'Food was successfully deleted.'
       redirect_to foods_path
@@ -33,8 +33,6 @@ class FoodsController < ApplicationController
       render :show
     end
   end
-
-
 
   def food_params
     my_food = params.require(:food).permit(:name, :measurement_unit, :price)

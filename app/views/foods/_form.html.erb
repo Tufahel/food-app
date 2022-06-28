@@ -10,7 +10,7 @@
    
       <div>
        <%= form.label :measurement_unit %><br />
-        <%= form.number_field :measurement_unit, autofocus: true %>
+        <%= form.text_field :measurement_unit, autofocus: true %>
         <% food.errors.full_messages_for(:measurement_unit).each do |message| %>
           <div><%= message %></div>
         <% end %>
@@ -18,7 +18,7 @@
     </div>
     <div>
      <%= form.label :price %><br />
-        <%= form.number_field :price, autofocus: true, placeholder: "Enter measurement unit" %>
+        <%= form.number_field :price, autofocus: true %>
         <% food.errors.full_messages_for(:price).each do |message| %>
           <div><%= message %></div>
         <% end %>
