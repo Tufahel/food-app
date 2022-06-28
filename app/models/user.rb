@@ -1,6 +1,6 @@
 class User < ApplicationRecord
+  attr_accessor :name, :email
 
-  attr_accessor :name , :email
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -8,9 +8,9 @@ class User < ApplicationRecord
   has_many :foods, dependent: :destroy
   has_many :recipes, dependent: :destroy
 
-  Roles = [ :admin , :default ]
+  ROLES = %i[admin default].freeze
 
-  def is?( requested_role )
-    self.role == requested_role.to_s
+  def is?(requested_role)
+    role == requested_role.to_s
   end
 end
