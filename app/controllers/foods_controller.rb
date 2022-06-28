@@ -19,9 +19,22 @@ class FoodsController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    @food = Food.find(params[:id])
+  end
 
-  def destroy; end
+  def destroy
+   @food = Food.find(params[:id])
+    if @food.destroy
+      flash[:success] = 'Food was successfully deleted.'
+      redirect_to foods_path
+    else
+      flash[:error] = 'Something went wrong'
+      render :show
+    end
+  end
+
+  private
 
   def food_params
     my_food = params.require(:food).permit(:name, :measurement_unit, :price)
