@@ -9,9 +9,9 @@
       </div><br />
    
       <div>
-       <%= form.label :preperation_time %><br />
-        <%= form.text_field :preperation_time, autofocus: true %>
-        <% recipe.errors.full_messages_for(:preperation_time).each do |message| %>
+       <%= form.label :preparation_time %><br />
+        <%= form.text_field :preparation_time, autofocus: true %>
+        <% recipe.errors.full_messages_for(:preparation_time).each do |message| %>
           <div><%= message %></div>
         <% end %>
       </div>

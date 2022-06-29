@@ -8,9 +8,17 @@
   </div>
   <% if @recipes.exists? %>
       <% @recipes.each do |recipe| %>
-      <p><%= link_to recipe.name ,recipe_path(recipe.id) %></p>
-      <p><%= recipe.description %></p>
-      <p><%= button_to "Remove", recipe_path(recipe.id), method: :delete %></p>
+      <div class="container-fluid">
+        <div class="d-flex justify-content-around align-items-center border m-2">
+          <div class="mx-4">
+            <p><%= link_to recipe.name ,recipe_path(recipe.id) %></p>
+            <p><%= button_to "Remove", recipe_path(recipe.id), method: :delete %></p>
+          </div>
+          <div class="mx-4">
+            <p><span class="w-50"><%= recipe.description %></span></p>
+          </div>
+        </div>
+      </div>
       <% end %>
    <% else %>
           <p>No Recipe Added yet</p> 
