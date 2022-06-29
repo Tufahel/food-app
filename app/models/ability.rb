@@ -7,8 +7,9 @@ class Ability
     user ||= User.new # guest user (not logged in)
 
     return unless user.present?
-  can :manage, :all
-  
+
+    can :manage, :all
+
     if user.is? :admin
       can :manage, :all
     else

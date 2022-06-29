@@ -1,5 +1,4 @@
 class RecipeFoodsController < ApplicationController
-
   def new
     @recipe = Recipe.includes(:foods, :recipe_foods).find(params[:recipe_id])
     @recipe_food = @recipe.recipe_foods.new
@@ -7,9 +6,9 @@ class RecipeFoodsController < ApplicationController
   end
 
   def create
-      @recipe = Recipe.includes(:foods, :recipe_foods).find(params[:recipe_id])
-   @recipe_food = @recipe.recipe_foods.new(recipe_food_params)
-   if @recipe_food.save
+    @recipe = Recipe.includes(:foods, :recipe_foods).find(params[:recipe_id])
+    @recipe_food = @recipe.recipe_foods.new(recipe_food_params)
+    if @recipe_food.save
       flash[:success] = 'Ingredient added successfully'
       redirect_to recipe_path(@recipe.id)
     else
@@ -18,8 +17,8 @@ class RecipeFoodsController < ApplicationController
     end
   end
 
-   def destroy
-     @recipe_food = RecipeFood.includes(:food, :recipe).find(params[:id])
+  def destroy
+    @recipe_food = RecipeFood.includes(:food, :recipe).find(params[:id])
     if @recipe_food.destroy
       flash[:success] = 'Ingredient was successfully deleted.'
       redirect_to recipes_path
@@ -30,6 +29,6 @@ class RecipeFoodsController < ApplicationController
   end
 
   def recipe_food_params
-   ingredient = params.require(:recipe_food).permit(:quantity, :food_id)
+    params.require(:recipe_food).permit(:quantity, :food_id)
   end
 end
