@@ -2,6 +2,15 @@
 
 <section>
   <%= render "recipe", recipe: @recipe %>
+  <h3>Steps go here...</h3>
+  <div>
+  <span>
+    <%= button_to "Generate shopping list", model %>
+    </span>
+  <span>
+    <%= button_to "text", model %>
+    </span>
+  </div>
   <%= link_to "Back to recipe", recipes_path %>
 </section>
 

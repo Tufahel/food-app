@@ -4,7 +4,9 @@
   </div>
   <br />
   <div>
+  <% if can? :create, @recipes.first %>
    <%= button_to "Add Recipe", new_recipe_path, method: :get %>
+   <% end %>
   </div>
   <% if @recipes.exists? %>
       <% @recipes.each do |recipe| %>
@@ -12,7 +14,9 @@
         <div class="d-flex justify-content-around align-items-center border m-2">
           <div class="mx-4">
             <p><%= link_to recipe.name ,recipe_path(recipe.id) %></p>
+            <% if can? :destroy, recipe %>
             <p><%= button_to "Remove", recipe_path(recipe.id), method: :delete %></p>
+          <% end %>  
           </div>
           <div class="mx-4">
             <p><span class="w-50"><%= recipe.description %></span></p>

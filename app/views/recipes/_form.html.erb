@@ -10,7 +10,7 @@
    
       <div>
        <%= form.label :preparation_time %><br />
-        <%= form.text_field :preparation_time, autofocus: true %>
+        <%= form.number_field :preparation_time, autofocus: true %>
         <% recipe.errors.full_messages_for(:preparation_time).each do |message| %>
           <div><%= message %></div>
         <% end %>
@@ -18,7 +18,7 @@
 
       <div>
        <%= form.label :cooking_time %><br />
-        <%= form.text_field :cooking_time, autofocus: true %>
+        <%= form.number_field :cooking_time, autofocus: true %>
         <% recipe.errors.full_messages_for(:cooking_time).each do |message| %>
           <div><%= message %></div>
         <% end %>
