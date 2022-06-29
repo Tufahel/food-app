@@ -1,12 +1,13 @@
 class RecipeFoodsController < ApplicationController
-before_action :set_recipe, only: %i[new create]
 
   def new
+    @recipe = Recipe.includes(:foods, :recipe_foods).find(params[:recipe_id])
     @recipe_food = @recipe.recipe_foods.new
     @foods = current_user.foods.all
   end
 
   def create
+      @recipe = Recipe.includes(:foods, :recipe_foods).find(params[:recipe_id])
    @recipe_food = @recipe.recipe_foods.new(recipe_food_params)
    if @recipe_food.save
       flash[:success] = 'Ingredient added successfully'
@@ -18,18 +19,14 @@ before_action :set_recipe, only: %i[new create]
   end
 
    def destroy
-    @recipe_food = RecipeFoods.includes(:recipe, :food).find(params[:id])
+     @recipe_food = RecipeFood.includes(:food, :recipe).find(params[:id])
     if @recipe_food.destroy
-      flash[:success] = 'Recipe was successfully deleted.'
+      flash[:success] = 'Ingredient was successfully deleted.'
       redirect_to recipes_path
     else
       flash[:error] = 'Something went wrong'
       render :show
     end
-  end
-
-  def set_recipe
-    @recipe = Recipe.includes(:recipe, :food).find(params[:id])
   end
 
   def recipe_food_params
