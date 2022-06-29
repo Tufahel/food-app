@@ -1,0 +1,9 @@
+<p style="color: green"><%= notice %></p>
+
+<section>
+  <%= render "recipe", recipe: @recipe %>
+  <%= button_to "Delete this recipe", recipe_path, method: :delete %>
+    <%= link_to "Back to recipe", recipes_path %>
+</section>
+
+
