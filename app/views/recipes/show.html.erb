@@ -2,6 +2,37 @@
 
 <section>
   <%= render "recipe", recipe: @recipe %>
+  <h3>Steps go here...</h3>
+  <div>
+  <span>
+    <%= button_to "Generate shopping list", general_shopping_list_index_path %>
+    </span>
+   <% if can? :create, @recipe %>
+  <%= button_to "Add ingredient", new_recipe_recipe_food_path(@recipe), method: :get  %>
+   <% end %>
+  </div>
+  <table>
+    <th>
+     <td>Food</td>
+     <td>Quantity</td>
+     <td>Value</td>
+     <td>Action</td>
+    </td>
+    
+      <% @recipe_foods.each do |recipe_food| %>
+      <tr>
+        <td><%= link_to recipe_food.food.name,food_path(recipe_food.food.id) %></td>
+          <td><%= recipe_food.quantity %></td>
+          <td>$<%= recipe_food.food.price * recipe_food.quantity %></td>
+          <% if can? :destroy, @food %>
+          <td>
+  <%= button_to "Remove", recipe_recipe_food_path(@recipe, recipe_food), method: :delete %>
+   <% end %>
+   </td>
+           <td><button>Modify</button></td>
+      </tr>
+    <% end %>
+  </table>
   <%= link_to "Back to recipe", recipes_path %>
 </section>
 

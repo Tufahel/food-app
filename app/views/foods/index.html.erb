@@ -1,11 +1,14 @@
 <section>
   <div>
+  <% if can? :create, @foods.first %>
    <%= button_to "Add Food", new_food_path, method: :get %>
+   <% end %>
   </div>
   <% if @foods.exists? %>
   <table>
     <th>
      <td>Food</td>
+     <td>Quantity</td>
      <td>Measurement unit</td>
      <td>Unit price</td>
      <td>Action</td>
@@ -14,9 +17,12 @@
       <% @foods.each do |food| %>
       <tr>
         <td><%= link_to food.name ,food_path(food.id) %></td>
+          <td><%= food.quantity %></td>
           <td><%= food.measurement_unit %></td>
           <td>$<%= food.price %></td>
-          <td><%= button_to "Delete", food_path(food.id), method: :delete %></td>
+          <% if can? :destroy, food %>
+            <td><%= button_to "Delete", food_path(food.id), method: :delete %></td>
+          <% end %>
              </tr>
       <% end %>
  

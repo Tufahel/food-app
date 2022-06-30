@@ -1,0 +1,14 @@
+<%= form_with model: recipe_food, url: recipe_recipe_foods_path  do |form| %>
+    <div>
+         <%= form.select :food_id, foods.collect { |food| [food.name, food.id]} %><br />
+           <div>
+     <%= form.label :quantity %><br />
+        <%= form.number_field :quantity, autofocus: true %>
+      </div>
+
+    </div>
+    <br />
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

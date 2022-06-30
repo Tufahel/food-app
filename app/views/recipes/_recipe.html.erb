@@ -9,11 +9,23 @@
 =end%>
 
 <div>
-    <h1 class="text-center" > Name: <%= recipe.name %></h1>
+    <h1 class="text-center" > <%= recipe.name %></h1>
     <div class="d-flex justify-content-around" id="<%= dom_id recipe %>">
      <div>
-        <p>Preparation time: <%= recipe.preparation_time %> hour</p>
-        <p>Cooking time: <%= recipe.cooking_time %> hour</p>
+        <p>Preparation time: <%= recipe.preparation_time %>
+         <% if recipe.preparation_time > 1  %>
+           hours
+           <% else  %>
+          hour
+         <% end %> </p>
+         
+        <p>Cooking time: <%= recipe.cooking_time %> 
+        <% if recipe.cooking_time > 1  %>
+           hours
+           <% else  %>
+          hour
+         <% end %>
+         </p>
      </div>
      <div class="form-check form-switch">
         <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
