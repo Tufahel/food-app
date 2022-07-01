@@ -10,7 +10,7 @@
 
 <div>
     <h1 class="text-center" > <%= recipe.name %></h1>
-    <div class="d-flex justify-content-around" id="<%= dom_id recipe %>">
+    <div class="d-flex justify-content-between mx-5" id="<%= dom_id recipe %>">
      <div>
         <p>Preparation time: <%= recipe.preparation_time %>
          <% if recipe.preparation_time > 1  %>

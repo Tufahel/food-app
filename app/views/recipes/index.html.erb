@@ -1,11 +1,7 @@
 <section>
   <div>
-   <%= button_to "Go to Food path", foods_path, method: :get %>
-  </div>
-  <br />
-  <div>
   <% if can? :create, @recipes.first %>
-   <%= button_to "Add Recipe", new_recipe_path, method: :get %>
+   <%= button_to "Add Recipe", new_recipe_path, method: :get, class:"btn btn-primary mx-4 my-2" %>
    <% end %>
   </div>
   <% if @recipes.exists? %>
@@ -15,7 +11,7 @@
           <div class="mx-4">
             <p><%= link_to recipe.name ,recipe_path(recipe.id) %></p>
             <% if can? :destroy, recipe %>
-            <p><%= button_to "Remove", recipe_path(recipe.id), method: :delete %></p>
+            <p><%= button_to "Remove", recipe_path(recipe.id), method: :delete, class:"btn btn-danger" %></p>
           <% end %>  
           </div>
           <div class="mx-4">
