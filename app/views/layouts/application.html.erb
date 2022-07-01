@@ -10,6 +10,7 @@
   </head>
 
   <body>
+    <%= render partial: "shared/navbar" %>
     <%= yield %>
      <% flash.each do |name, message| %>
     <div class="<%= name %>"><%= message %></div>
