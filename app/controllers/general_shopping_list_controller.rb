@@ -5,6 +5,7 @@ class GeneralShoppingListController < ApplicationController
     @total_price = 0
     @foods = current_user.foods.includes(:recipe_foods).map do |food|
       next if food.recipe_foods.empty?
+
       total_quantity = food.recipe_foods.sum(:quantity)
       price = total_quantity * food.price
       @total_price += price
@@ -15,7 +16,5 @@ class GeneralShoppingListController < ApplicationController
         price: food.price
       }
     end.compact
-
   end
-  
 end
