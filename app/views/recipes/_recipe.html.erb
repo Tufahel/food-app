@@ -10,7 +10,7 @@
 
 <div>
     <h1 class="text-center" > <%= recipe.name %></h1>
-    <div class="d-flex justify-content-around" id="<%= dom_id recipe %>">
+    <div class="d-flex justify-content-between mx-5" id="<%= dom_id recipe %>">
      <div>
         <p>Preparation time: <%= recipe.preparation_time %>
          <% if recipe.preparation_time > 1  %>
@@ -28,8 +28,16 @@
          </p>
      </div>
      <div class="form-check form-switch">
-        <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked>
-        <label class="form-check-label" for="flexSwitchCheckChecked">Public</label>
-     </div>
-    </div>
+        <% if can? :manage, @recipe %>
+          <%= form_with(model: @recipe) do |form| %>
+            <%= form.check_box :public,onchange: 'this.form.submit();',class:"form-check-input"%>
+            <label class="form-check-label" for="flexSwitchCheckDefault">public</label>
+          <% end %>
+        <% else %>
+          <%= form_with(model: @recipe) do |form| %>
+            <%= form.check_box :public, disabled: true,class:"form-check-input" %>
+            <label class="form-check-label" for="flexSwitchCheckDefault">public</label>
+          <% end %>
+        <% end %>
+      </div>
 </div>
