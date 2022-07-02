@@ -1,6 +1,12 @@
 class RecipesController < ApplicationController
+  before_action :authenticate_user!, except: [:public]
+
+  def public
+    @recipes = Recipe.where(public: true)
+  end
+
   def index
-    @recipes = Recipe.all
+    @recipes = Recipe.where(user_id: current_user.id)
   end
 
   def new
@@ -9,7 +15,7 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.new(recipe_params)
-
+    
     if @recipe.save
       flash[:success] = 'Recipe added successfully'
       redirect_to recipes_path
