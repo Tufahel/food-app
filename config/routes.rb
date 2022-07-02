@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :recipes do
     resources :recipe_foods
     end
-  resources :public_recipes, only: [:create, :destory] 
-  resources :general_shopping_list, only: [:create, :destory]  
+  resources :public_recipes
+  resources :general_shopping_list
 
 end
